@@ -29,18 +29,12 @@ const cameraPreview = ref()
 
 // 分析亮度并计算曝光参数
 async function analyzeBrightness() {
-  console.log(cameraPreview.value)
-  console.log(
-    !cameraPreview.value?.videoRef?.value,
-    cameraPreview.value?.videoRef?.value,
-    cameraPreview.value?.videoRef,
-    !cameraPreview.value?.isStreaming,
-  )
-  if (!cameraPreview.value?.videoRef?.value || !cameraPreview.value?.isStreaming) return
-  const video = cameraPreview.value.videoRef.value
+  if (!cameraPreview.value?.video?.value || !cameraPreview.value?.isStreaming) return
+
+  const video = cameraPreview.value.video.value
   const canvas = document.createElement('canvas')
   const context = canvas.getContext('2d')
-  console.log('🚀 ~ analyzeBrightness ~ context:', context)
+  console.log('🚀 ~ analyzeBrightness ~ context:', context);
 
   if (!context) return
 
